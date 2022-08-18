@@ -142,3 +142,69 @@ go install生成的可执行文件存储在GOPATH/bin下
 - 工作目录
 - GOPATH/pkg/mod
 - GOROOT/src
+
+# 常用指令
+
+## go help
+
+查看文档
+
+```bash
+go help build
+```
+
+## go build
+
+对源码和依赖的文件进行打包，生成可执行文件。
+
+```bash
+go build <源文件>
+```
+
+```bash
+go build -o <可执行文件名> <源文件>
+```
+
+## go install
+
+编译并安装包或依赖，安装到GOPATH/bin目录下
+
+```bash
+go install <源文件>
+```
+
+## go get
+
+```bash
+go get <第三方包>
+```
+
+把依赖库添加到module中，如果本机之前从未安装过则先下载并安装。
+
+会在GOPATH/pkg/mod目录下是生成包目录，同时在GOPATH/bin目录下生成可执行文件。
+
+## go mod tidy
+
+引用项目需要的依赖增加到go.mod文件。
+
+去掉go.mod文件中项目不需要的依赖。
+
+## go run
+
+编译并运行程序
+
+## go test
+
+执行测试代码
+
+## go tool
+
+执行go自带的工具
+
+go tool pprof对cpu、内存和协程进行监控
+
+go tool trace跟踪协程的执行情况
+
+## go vet
+
+检查代码中的静态错误
