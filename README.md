@@ -241,3 +241,60 @@ _=2+4
 ```
 
 匿名变量不占用命名空间，不会分配内存，因此可以重复使用。
+
+# 常量
+
+```bash
+const (
+  PI=3.14
+  E=2.71
+)
+const (
+  a=100
+  b   # 100 和上一行相同
+  c   # 100 和上一行相同
+)
+```
+
+# iota
+
+`iota`是go语言的常量计数器，只能在常量的表达式中使用。
+
+ 使用 `iota`时只需要记住以下两点
+
+1.`iota`在 `const`关键字出现时将被重置为0。
+
+2.`const`中每新增一行常量声明将使 `iota`计数一次(iota可理解为 `const`语句块中的行索引)。
+
+```bash
+const(
+  a=iota # 0
+  b      # 1
+  c      # 2
+  d      # 3
+)
+const(
+  a=iota # 0
+  b      # 1
+  _      # 2
+  d      # 3
+)
+const(
+  a=iota # 0
+  b=30  
+  c=iota # 2
+  d      # 3
+)
+const(
+  _=iota         # iota=0
+  KB=1<<(10*iota)# iota=1
+  MB=1<<(10*iota)# iota=2
+  BG=1<<(10*iota)# iota=3
+  TB=1<<(10*iota)# iota=4
+)
+const(
+  a,b=iota+1,iota+2 # 1,2 iota=0
+  c,d               # 2,3 iota=1
+  e,f               # 3,4 iota=2
+)
+```
