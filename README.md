@@ -208,3 +208,18 @@ go tool trace跟踪协程的执行情况
 ## go vet
 
 检查代码中的静态错误
+
+# 变量类型
+
+| 类型     | go变量类型                                                      | fmt输出  |
+| -------- | --------------------------------------------------------------- | -------- |
+| 整数     | int int8 int16 int32 int64 uint uint8<br />uint16 uint32 uint64 | %d       |
+| 浮点数   | float32 float64                                                 | %f %e %g |
+| 复数     | complex128 complex64                                            | %v       |
+| 布尔型态 | bool                                                            | %t       |
+| 指针     | uintprt                                                         | %d       |
+| 引用     | map slice channel                                               | %v       |
+| 字节     | byte                                                            | %d       |
+| 任意符   | rune                                                            | %d       |
+| 字符串   | string                                                          | %s       |
+| 错误     | error                                                           | %v       |
