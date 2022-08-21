@@ -365,6 +365,24 @@ godoc可以为项目代码导出网页版注释文档
 | interface | nil    | 接口        |
 | function  | nil    | 函数        |
 
+# 自定义类型
+
+## 类型别名
+
+type byte = uint8
+
+type rune = int32
+
+## 自定义类型
+
+type signal uint
+
+type ms map[string]string
+
+type add func(a,b int) int
+
+type user struct {name string,age int}
+
 # 指针
 
 ```go
