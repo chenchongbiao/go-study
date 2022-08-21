@@ -364,3 +364,21 @@ godoc可以为项目代码导出网页版注释文档
 | channel   | nil    | 引用类型    |
 | interface | nil    | 接口        |
 | function  | nil    | 函数        |
+
+## 指针
+
+```go
+func scope() {
+	var a int
+	var pointer unsafe.Pointer = unsafe.Pointer(&a)
+	var p uintptr = uintptr(pointer)
+	var ptr *int = &a
+	fmt.Printf("pointer %p,p %d %x,ptr %p\n",pointer,p,p,ptr)
+}
+```
+
+结果
+
+```go
+pointer 0xc00001a0f0,p 824633827568 c00001a0f0,ptr 0xc00001a0f0
+```
