@@ -417,3 +417,17 @@ divide by zero
 divide by zero
 &errors.errorString{s:"divide by zero"}
 ```
+
+# 数组
+
+```go
+	var arr1 [5]int = [5]int{} // 数组要指定长度和类型，且长度和类型指定后不可改变
+	var arr2 = [5]int{}
+	var arr3 = [5]int{3, 2}            // 给前2个元素复制
+	var arr4 = [5]int{2: 15, 4: 30}    // 指定index赋值
+	var arr5 = [...]int{3, 2, 6, 5, 4} // 根据{}的元素个数推断出数组的长度
+	var arr6 = [...]struct {
+		name string
+		age  int
+	}{{"Tom", 18}, {"Jim", 20}} // 数组的元素类型由匿名结构体给定
+```
