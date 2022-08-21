@@ -365,7 +365,7 @@ godoc可以为项目代码导出网页版注释文档
 | interface | nil    | 接口        |
 | function  | nil    | 函数        |
 
-## 指针
+# 指针
 
 ```go
 func scope() {
@@ -381,4 +381,21 @@ func scope() {
 
 ```go
 pointer 0xc00001a0f0,p 824633827568 c00001a0f0,ptr 0xc00001a0f0
+```
+
+# 异常
+
+```go
+	e := errors.New("divide by zero")
+	fmt.Printf("%v\n",e)
+	fmt.Printf("%+v\n",e)
+	fmt.Printf("%#v\n",e)
+```
+
+结果
+
+```go
+divide by zero
+divide by zero
+&errors.errorString{s:"divide by zero"}
 ```
