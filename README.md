@@ -454,3 +454,53 @@ divide by zero
 	s2d := [][]int{
 		{1}, {2, 3}, //二维数组各行列数相等，但是二维切片各行的len可以不相等
 ```
+
+# map
+
+go map的底层实现是hash table，根据key查找value的时间复杂度是O(1)。
+
+```go
+	var m map[string]int                  // 声明map，指定key和value的数据类型
+	m = make(map[string]int)              // 初始化，容量为0
+	m = make(map[string]int, 5)           // 初始化，容量为5,建议初始化给一个合适的容量，减少扩容的概率
+	m = map[string]int{"语文": 0, "数学": 39} // 初始化直接赋值
+```
+
+# channel
+
+管道底层是一个环形队列（先进先出），send（插入）和recv（取走）从同一个位置沿同一个方向顺序执行
+
+sendx表示最后一次插入元素的诶只，recvx表示最后一次取走元素的位置
+
+```go
+	var ch chan int        // 声明
+	ch = make(chan int, 8) // 初始化环形队列可容纳8个数据
+
+	ch <- 1 // 往管道里写入（send）数据
+	ch <- 2
+	ch <- 3
+	v := <-ch // 从管道里取走（recv）数据
+	v = <-ch
+
+	close(ch) // 遍历前必须关闭管道，禁止写入元素
+
+	// 遍历管道里剩下的元素
+	for ele := range ch {
+		fmt.Println(ele)
+	}
+```
+
+# 结构体
+
+```go
+	var u User
+	user := &u    // 通过取地址符&得到指针
+	user = &User{ // 直接创建结构体指针
+		Id: 3, Name: "zcy", addr: "beijing",
+	}
+	user = new(User) // 通过new()函数实体化一个结构体，并返回其指针
+```
+
+# Beego
+
+beego 是一个快速开发 Go 应用的 HTTP 框架，他可以用来快速开发 API、Web 及后端服务等各种应用，是一个 RESTful 的框架，主要设计灵感来源于 tornado、sinatra 和 flask 这三个框架，但是结合了 Go本身的一些特性（interface、struct 嵌入等）而设计的一个框架。
