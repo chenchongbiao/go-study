@@ -46,4 +46,32 @@ func main() {
 	s2d := [][]int{
 		{1}, {2, 3}, //二维数组各行列数相等，但是二维切片各行的len可以不相等
 	}
+
+	var m map[string]int                  // 声明map，指定key和value的数据类型
+	m = make(map[string]int)              // 初始化，容量为0
+	m = make(map[string]int, 5)           // 初始化，容量为5,建议初始化给一个合适的容量，减少扩容的概率
+	m = map[string]int{"语文": 0, "数学": 39} // 初始化直接赋值
+
+	var ch chan int        // 声明
+	ch = make(chan int, 8) // 初始化环形队列可容纳8个数据
+
+	ch <- 1 // 往管道里写入（send）数据
+	ch <- 2
+	ch <- 3
+	v := <-ch // 从管道里取走（recv）数据
+	v = <-ch
+
+	close(ch) // 遍历前必须关闭管道，禁止写入元素
+
+	// 遍历管道里剩下的元素
+	for ele := range ch {
+		fmt.Println(ele)
+	}
+
+	var u User
+	user := &u    // 通过取地址符&得到指针
+	user = &User{ // 直接创建结构体指针
+		Id: 3, Name: "zcy", addr: "beijing",
+	}
+	user = new(User) // 通过new()函数实体化一个结构体，并返回其指针
 }
