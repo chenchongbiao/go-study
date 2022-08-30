@@ -525,5 +525,62 @@ go get -u github.com/beego/bee/v2
 ## 安装bee工具
 
 ```go
-go  install github.com/beego/bee@latest
+go install github.com/beego/bee/v2@latest
+```
+
+## `new` 命令
+
+`new` 命令是新建一个 Web 项目，我们在命令行下执行 `bee new <项目名>` 就可以创建一个新的项目。但是注意该命令必须在 `$GOPATH/src` 下执行。最后会在 `$GOPATH/src` 相应目录下生成如下目录结构的项目：
+
+```go
+myproject
+├── conf
+│   └── app.conf
+├── controllers
+│   └── default.go
+├── main.go
+├── models
+├── routers
+│   └── router.go
+├── static
+│   ├── css
+│   ├── img
+│   └── js
+├── tests
+│   └── default_test.go
+└── views
+    └── index.tpl
+
+8 directories, 4 files
+```
+
+## `api` 命令
+
+上面的 `new` 命令是用来新建 Web 项目，不过很多用户使用 beego 来开发 API 应用。所以这个 `api` 命令就是用来创建 API 应用的，执行命令之后如下所示：
+
+```go
+apiproject
+├── conf
+│   └── app.conf
+├── controllers
+│   └── object.go
+│   └── user.go
+├── docs
+│   └── doc.go
+├── main.go
+├── models
+│   └── object.go
+│   └── user.go
+├── routers
+│   └── router.go
+└── tests
+    └── default_test.go
+```
+
+## `run` 命令
+
+我们在开发 Go 项目的时候最大的问题是经常需要自己手动去编译再运行，`bee run` 命令是监控 beego 的项目，通过 [fsnotify](https://github.com/howeyc/fsnotify)监控文件系统。但是注意该命令必须在 `$GOPATH/src/appname` 下执行。
+
+```go
+bee run
 ```
