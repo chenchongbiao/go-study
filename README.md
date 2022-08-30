@@ -170,7 +170,7 @@ go build -o <可执行文件名> <源文件>
 编译并安装包或依赖，安装到GOPATH/bin目录下
 
 ```bash
-go install <源文件>
+go install <源文件>@版本
 ```
 
 ## go get
@@ -504,3 +504,26 @@ sendx表示最后一次插入元素的诶只，recvx表示最后一次取走元�
 # Beego
 
 beego 是一个快速开发 Go 应用的 HTTP 框架，他可以用来快速开发 API、Web 及后端服务等各种应用，是一个 RESTful 的框架，主要设计灵感来源于 tornado、sinatra 和 flask 这三个框架，但是结合了 Go本身的一些特性（interface、struct 嵌入等）而设计的一个框架。
+
+[官方文档](https://beego.vip/docs/intro/)
+
+## 安装
+
+beego 包含一些示例应用程序以帮您学习并使用 beego 应用框架。
+
+你需要安装或者升级 Beego 和 [Bee](http://beego.vip/docs/install/bee.md) 的开发工具:
+
+```go
+go get -u github.com/beego/beego/v2
+go get -u github.com/beego/bee/v2
+```
+
+*如果go get时出现 `package github.com/beego/beego/v2: cannot find package "github.com/beego/beego/v2" in any of:`的报错，请先 `export GO111MODULE=on`*
+
+为了更加方便的操作，请将 `$GOPATH/bin` 加入到你的 `$PATH` 变量中。请确保在此之前您已经添加了 `$GOPATH` 变量。
+
+## 安装bee工具
+
+```go
+go  install github.com/beego/bee@latest
+```
