@@ -1,5 +1,3 @@
-视频
-
 # **【马哥教育Golang专题课】**
 
 [华科大大佬50个小时讲完的Golang，Go语言全套](https://www.bilibili.com/video/BV1CU4y1d7Vc?spm_id_from=333.337.search-card.all.click)
@@ -447,7 +445,7 @@ divide by zero
 
 # 切片
 
-![img]()
+![img](image/append扩容参数.jpg)
 
 ```go
 	var s []int              //切片声明，len=cap=0
@@ -544,6 +542,61 @@ go语言也实现了这种并发模型
 ## MPG并发模型
 
 ![img](image/mpg并发模型.jpg)
+
+## 闭包
+
+全局变量的特点：
+
+    1.常驻内存
+      2. 污染全局
+   局部变量的特点：
+      1.不常驻内存
+      2.不污染全局
+
+Go语言的闭包可以做到
+
+    1.可以让变量常驻内存
+    2.可以让变量不污染全局
+
+所以闭包主要是为了避免全局变量的滥用。
+
+闭包
+   1.闭包是指有权访问另一个函数作用域中的变量的函数
+   2.创建闭包的常见方式就是在一个函数内部创建另一个函数， 内函数可以访问外函数的变量
+
+注意：
+       闭包里作用域返回的局部变量不会被立刻销毁回收，但过度使用闭包可能会占用更多内存，导致性能下降。
+
+```go
+package main
+
+import "fmt"
+
+func func1() int {
+	val := 10
+	defer func() {
+		val += 1
+		fmt.Println(val)
+	}()
+	return val
+
+}
+
+func printFunc1() {
+	fmt.Println(func1())
+}
+func main() {
+	printFunc1()
+}
+```
+
+```
+11
+10
+```
+
+## goroutine
+
 
 # Beego
 
