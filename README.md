@@ -447,6 +447,8 @@ divide by zero
 
 # 切片
 
+![img]()
+
 ```go
 	var s []int              //切片声明，len=cap=0
 	s = []int{}              //初始化，len=cap=0
@@ -542,7 +544,6 @@ go语言也实现了这种并发模型
 ## MPG并发模型
 
 ![img](image/mpg并发模型.jpg)
-
 
 # Beego
 
