@@ -597,6 +597,58 @@ func main() {
 
 ## goroutine
 
+goroutine 是 Go语言中的轻量级线程实现，由 Go 运行时（runtime）管理。Go 程序会智能地将 goroutine 中的任务合理地分配给每个 CPU。
+
+Go 程序从 main 包的 main() 函数开始，在程序启动时，Go 程序就会为 main() 函数创建一个默认的 goroutine。
+
+使用 go 关键字，将 running() 函数并发执行，每隔一秒打印一次计数器，而 main 的 goroutine 则等待用户输入，两个行为可以同时进行。请参考下面代码：
+
+```go
+package main
+
+import (
+	"fmt"
+	"time"
+)
+
+func running() {
+	var times int
+	// 构建一个无限循环
+	for {
+		times++
+		fmt.Println("tick", times)
+		// 延时1秒
+		time.Sleep(time.Second)
+	}
+}
+func main() {
+	// 并发执行程序
+	go running()
+	// 接受命令行输入, 不做任何事情
+	var input string
+	fmt.Scanln(&input)
+}
+```
+
+代码执行后，命令行会不断地输出 tick，同时可以使用 fmt.Scanln() 接受用户输入。两个环节可以同时进行。
+
+代码说明如下：
+
+第 12 行，使用 for 形成一个无限循环。
+
+第 13 行，times 变量在循环中不断自增。
+
+第 14 行，输出 times 变量的值。
+
+第 17 行，使用 time.Sleep 暂停 1 秒后继续循环。
+
+第 25 行，使用 go 关键字让 running() 函数并发运行。
+
+第 29 行，接受用户输入，直到按 Enter 键时将输入的内容写入 input 变量中并返回，整个程序终止。
+
+这个例子中，Go 程序在启动时，运行时（runtime）会默认为 main() 函数创建一个 goroutine。在 main() 函数的
+goroutine 中执行到 go running 语句时，归属于 running() 函数的 goroutine 被创建，running()
+函数开始在自己的 goroutine 中执行。此时，main() 继续执行，两个 goroutine 通过 Go 程序的调度机制同时运作。
 
 # Beego
 
