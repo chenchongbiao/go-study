@@ -650,6 +650,12 @@ func main() {
 goroutine 中执行到 go running 语句时，归属于 running() 函数的 goroutine 被创建，running()
 函数开始在自己的 goroutine 中执行。此时，main() 继续执行，两个 goroutine 通过 Go 程序的调度机制同时运作。
 
+## defer
+
+defer一般用于资源的释放和异常的捕捉, 作为Go语言的特性之一，defer 语句会将其后面跟随的语句进行延迟处理. 意思就是说 跟在defer后面的语言 将会在程序进行最后的return之后再执行.
+
+在 defer 归属的函数即将返回时，将延迟处理的语句按 defer 的逆序进行执行，也就是说，先被 defer 的语句最后被执行，最后被 defer 的语句，最先被执行。
+
 # Beego
 
 beego 是一个快速开发 Go 应用的 HTTP 框架，他可以用来快速开发 API、Web 及后端服务等各种应用，是一个 RESTful 的框架，主要设计灵感来源于 tornado、sinatra 和 flask 这三个框架，但是结合了 Go本身的一些特性（interface、struct 嵌入等）而设计的一个框架。
